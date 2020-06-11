@@ -2,31 +2,14 @@ import pandas as pd
 import numpy as np
 from scipy import sparse
 from sklearn.neighbors import NearestNeighbors
+from sklearn.externals import joblib
 from tqdm import tqdm
 
 df = pd.read_csv('top10s.csv',encoding='latin1')
 
 # print(df.head())
-df.shape
-
-df_to_model = df[['bpm','nrgy','dnce','val','spch', 'acous','dB']]
-
-for i in df_to_model.columns:
-    try:
-        for j in tqdm(range(0,df.shape[0])):
-            df_to_model.loc[j,i] = (df_to_model.loc[j,i] - df_to_model[i].min())/(df_to_model[i].max() - df_to_model[i].min())
-    except:
-        pass
-
-df_ar = df_to_model.to_numpy()
-
-df_spm = sparse.csr_matrix(df_ar)
-
-model_nn = NearestNeighbors(metric='cosine',algorithm='brute',n_neighbors=20)
-
-model_nn.fit(df_spm)
-
-
+model_nn = joblib.load('NN_model.pkl')
+df_spm = joblib.load('model_spm.pkl')
 def songRecommender(song_name):
 
     id = df.loc[df['title'] == song_name]
@@ -57,8 +40,10 @@ def songRecommender(song_name):
     recomendations = df[df.index.isin(values[1][0])] 
     recomendations = recomendations[recomendations['top genre'] != id['top genre'].values[0]] 
     recomendations = recomendations[recomendations['artist'] != id['artist'].values[0]]
-    print(" \n Discover : \n ", recomendations[['title', 'top genre', 'artist']].head())
+    rec = recomendations[['title', 'top genre', 'artist']].head()
+
+    print(" \n Discover : \n ", rec)
 
 
-songRecommender("Let Me Be Your Lover")
+songRecommender("Underneath the Tree")
 
