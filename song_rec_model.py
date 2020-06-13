@@ -5,7 +5,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.externals import joblib
 from tqdm import tqdm
 
-df = pd.read_csv('C:\Pracs\Internship\top10s.json',index_col='id')
+df = pd.read_csv('top10s.csv',encoding='latin1')
 
 # print(df.head())
 df.shape
