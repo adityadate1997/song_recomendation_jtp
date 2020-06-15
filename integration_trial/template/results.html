@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+ 
+
+{% block content %}
+
+<h2>Recommendations:</h2><br><br>
+
+<h3>Top in Genre:</h3><br>
+ 
+ {% for i in rec_genre %}
+     {{ i.title }} <br>
+ {% endfor %}
+     
+<h3>Top By Artist:</h3><br>
+{% for i in rec_artist%}
+{{ i.title }} <br>
+{% endfor %}        
+
+<h3>Discover:</h3><br>
+{% for i in rec_discover%}
+{{ i }} <br>
+{% endfor %}
+
+{% endblock %}

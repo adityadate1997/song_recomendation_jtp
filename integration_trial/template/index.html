@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+ 
+
+{% block content %}
+<h1>Select a song you like: </h1>
+
+<form action="result/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {% for i in songs %}
+    <label>{{ i.title }}</label> <input type="radio" value='{{ i.id  }}' name="option"><br>
+    {% endfor %}
+    
+    
+        
+    
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
+    
