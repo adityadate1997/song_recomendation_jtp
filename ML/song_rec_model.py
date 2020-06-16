@@ -10,9 +10,9 @@ df = pd.read_csv('top10s.csv',encoding='latin1')
 # print(df.head())
 # df.shape
 
-df_to_model = df[['bpm','nrgy','dnce','val','spch', 'acous','dB']]
+to_normalize = ['bpm','nrgy','dnce','val','spch', 'acous','dB']
 
-for i in df_to_model.columns:
+for i in to_normalize:
     try:
         for j in tqdm(range(0,df.shape[0])):
             df_to_model.loc[j,i] = (df_to_model.loc[j,i] - df_to_model[i].min())/(df_to_model[i].max() - df_to_model[i].min())
