@@ -4,48 +4,38 @@ from scipy import sparse
 from sklearn.neighbors import NearestNeighbors
 from sklearn.externals import joblib
 from tqdm import tqdm
-from . models import SongsDetail as sd
+from . models import NewerSongsDetails as nnsd
 
 
-df = pd.DataFrame(list(sd.objects.all().values()))
-
-# print(df.head())
-model_nn = joblib.load('./pickles/NN_model.pkl')
-df_spm = joblib.load('./pickles/model_spm.pkl')
 
 
-def songRecommender(song_name):
 
-    id = df.loc[df['title'] == song_name]
+def songRecommender(df:pd.DataFrame, songId:nnsd.SongID, size):
 
-    print("\n You selected : \n", id[['title','top_genre', 'artist']])
+    Id = df.loc[df['SongID'] == songId]
 
+    df_for_array = df[['energy','key','loudness','speechiness','acousticness','valence','tempo']]
 
-    
-    rec_genre = df.loc[df['top_genre'] == id['top_genre'].values[0]]
-    rec_genre = rec_genre[rec_genre['title'] != id['title'].values[0]].nlargest(5,['pop','year'])
+    # print(df_for_array.head())
 
+    array_for_model = df_for_array.to_numpy()
 
-    df_artist = df.loc[df['artist'] == id['artist'].values[0]]
-    rec_artist = df_artist[df_artist.index.isin(np.setdiff1d(df_artist.index,rec_genre.index))]
-    rec_artist = rec_artist[rec_artist['title'] != id['title'].values[0]].nlargest(5,['pop','year'])
-    # print(rec_artist['title'].values.difference(rec_genre['title'].values))
+    # print(array_for_model[Id.index])
+    spm_for_model = sparse.csr_matrix(array_for_model)
 
-
-   
-    # rec_genre.sort(['pop'], ascending=[1, 0])
-    # print("\nTop In Genre: \n ",rec_genre[['title','top_genre','artist']])
-
-    # print("\nTop In Artist: \n ",rec_artist[['title','top_genre','artist']])
-
-    values = model_nn.kneighbors(df_spm[id.index], n_neighbors=15)
+    # print(spm_for_model[Id.index])
+    model_nn = NearestNeighbors(metric='euclidean',algorithm='brute',n_neighbors=size)
+    model_nn.fit(spm_for_model)
+    values = model_nn.kneighbors(spm_for_model[Id.index], n_neighbors=size)
 
 
-    recomendations = df[df.index.isin(values[1][0])] 
-    recomendations = recomendations[recomendations['top_genre'] != id['top_genre'].values[0]] 
-    recomendations = recomendations[recomendations['artist'] != id['artist'].values[0]]
-    rec = recomendations[['title', 'top_genre', 'artist']].head()
+    recomendations = df[df.index.isin(Id.index ^ values[1][0])] 
 
-    return rec
+    return recomendations
 
 
+def recommendations(df, song:nnsd.SongID, size:int):
+    if size > 5:
+        return songRecommender(df, song, 6)
+    else:
+        return songRecommender(df, song, size)    
