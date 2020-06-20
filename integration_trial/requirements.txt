@@ -1,4 +1,4 @@
-django==2.2
+django==2.2.13
 sqlparse==0.2.4
 dnspython>=1.16
 django-import-export==2.0.2
