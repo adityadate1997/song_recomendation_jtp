@@ -3,27 +3,37 @@
 
 {% block content %}
 <h1>Please select the song from these Best matches: </h1>
+<div class="container-fluid">
+    
+    <div class="row-lg-1">
 
-{% if Songslist %}
-    <form action="result/" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        {% for i in Songslist %}
-        <label>{{ i.Song }} - {{ i.Performer }}</label> <input type="radio" value='{{ i.SongID  }}' name="option"><br>
-        {% endfor %}
-        
-        
-            
-        
-        <button type="submit">Submit</button>
-    </form>
-    <a href="{%url 'app:index'%}">Take me back</a>
-{% endif %}
+        <div class="col-lg-5 col-xs-offset-2">
+            {% if Songslist %}
+            <div class="list-group" width="500px">
+                {% for i in Songslist %}
+                <form action="." method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-{% if Try_again %}
-    <h3>{{ Try_again }}</h3><br>
-    To search again <a href="{%url 'app:index'%}">Click Here</a>
-{% endif %}
+                    <input type="hidden" value='{{ i.SongID  }}' name="songID"><br>
+                    <input type="hidden" value='result' name="action">
+                    <button type="submit" class="list-group-item list-group-item-primary" name="action" value="result"><h2>{{ i.Song }} - {{ i.Performer }}</h2></button>
+                </form>
+                {% endfor %}
+            </div>
+        
+        
+            {% endif %}
+
+            {% if Try_again %}
+                <h3>{{ Try_again }}</h3><br>
+                
+            {% endif %}
+        </div>
+        
+    </div>
+    
+</div>
+
     
         
 {% endblock %}

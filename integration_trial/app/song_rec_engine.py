@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy import sparse
 from sklearn.neighbors import NearestNeighbors
-from sklearn.externals import joblib
+# from sklearn.externals import joblib
 from tqdm import tqdm
 from . models import NewerSongsDetails as nnsd
 

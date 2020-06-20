@@ -6,6 +6,5 @@ app_name = 'app'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('searchResults/', views.searchResults, name='searchResults'),
-    path('searchResults/result/', views.result, name='result')
+    path('result/', views.result, name='result')
 ]

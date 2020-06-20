@@ -5,11 +5,22 @@ from . song_rec_engine import songRecommender,recommendations
 from . dataset_gen import datasetGenerator as dsg
 from . dataset_gen import genre_qs as gq
 from djongo.models import Q
-# df = pd.read_csv('integration_trial\app\top10s.csv', encoding='latin1')
+
 
 def index(request):
-    pop_songs = {}
-    return render(request,'index.html', {'songs':pop_songs})
+
+  
+    if request.POST:
+        if request.POST['action'] == 'search':
+            return searchResults(request)
+        
+        elif request.POST['action'] == 'result':
+            return result(request)      
+
+    else:
+        Top_genre_list = ['Blues', 'Country', 'Hip hop', 'Pop', 'Reggae', 'R&B', 'Hard Rock', 'Alternative Rock', 'Rap', 'Jazz', 'EDM', 'Metal']
+        return render(request,'index.html', {'Genre':Top_genre_list})
+                
 
 def searchResults(request):
 
@@ -21,11 +32,11 @@ def searchResults(request):
         
         if top_matches.exists():
             context = {'Songslist':top_matches}      
-            return render(request,'searchResults.html',context)
+            return render(request,'searchResults.html', context)
         else:
             Try_again = "Sorry no match Found: \n"+"Please try again with some other song, artist or genre"  
             context = {'Try_again':Try_again}
-            return render(request,'searchResults.html',context) 
+            return render(request,'searchResults.html', context) 
             
                
     elif request.POST['searchby']=='artist':
@@ -53,7 +64,7 @@ def searchResults(request):
 def result(request):
     
     recommendation = {}
-    song_id = request.POST['option']
+    song_id = request.POST['songID']
     song = nnsd.objects.get(SongID=song_id)
     qs_artist = nnsd.objects.filter(Q(SongID__icontains=song.Performer) | Q(spotify_track_album__icontains=song.spotify_track_album))
     qs_genre = gq(song.spotify_genre, song.WeekID)

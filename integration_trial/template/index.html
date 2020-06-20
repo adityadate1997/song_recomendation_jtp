@@ -2,18 +2,29 @@
  
 
 {% block content %}
-<h1>Search for song you like: </h1>
 
-<form action="searchResults/" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="text" placeholder="Search" name="search">
-    <select id="searchby" name="searchby">
-        <option value="genre">Genre</option>
-        <option value="artist">Artist</option>
-        <option value="name">Song Name</option>
-    </select>
-    <input type="submit" value="Submit"> 
-</form> <br><br>
+<h1>Select a Genre you like.. </h1>
+<br><br><br>
+<div class="container-fluid">
+    
+    <div class="row-sm">
+        {% for i in Genre %}
+        <div class="col-sm-3 col-xs-offset-1">
+            
+            
+                <form action="." method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <input type="hidden" value='genre' name="searchby"><br>
+                    <input type="hidden" value='search' name="action">
+                    <input type="hidden" value='{{ i }}' name="search">
+                    <button type="submit" class="btn aqua-gradient btn-lg"><h2>{{ i }}</h2></button><br>
+                </form><br>
+            
+            
+        </div>
+        {% endfor %}
+</div>        
 
 {% block search %}
     
