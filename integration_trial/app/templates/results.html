@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+ 
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'result.css' %}">
+
+<div class="split right">
+    <div class="container-fluid">
+        
+        
+
+        <div class="row-lg-1">
+            <h1>Top Recommendations:</h1>
+            <div class="col-lg-8">
+                
+                <div class="list-group">
+                    {% for i in rec_artist %}
+                    <form action="." method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <input type="hidden" value='{{ i.SongID  }}' name="songID"><br>
+                        <input type="hidden" value='result' name="action">
+                        <button type="submit" class="list-group-item list-group-item-primary" name="action" value="result"><h2>{{ i.Song }} - {{ i.Performer }}</h2></button>
+                    </form>
+                    {% endfor %}
+                    {% for i in rec_genre %}
+                    <form action="." method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <input type="hidden" value='{{ i.SongID  }}' name="songID"><br>
+                        <input type="hidden" value='result' name="action">
+                        <button type="submit" class="list-group-item list-group-item-primary" name="action" value="result"><h2>{{ i.Song }} - {{ i.Performer }}</h2></button>
+                    </form>
+                    {% endfor %}
+                </div>
+            
+            
+            </div>
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+
+<div class="split left">
+    <div class="centered">
+        <label>Current Selection</label> 
+      <br><br><br>  
+      <img src="../static/images/cover_1.jpg" alt="Avatar man">
+      <br><br>
+      <label>{{ song.Song }}</label><br>
+      <label>{{ song.Performer }}</label>
+    </div>
+</div>    
+
+
+
+{% endblock %}

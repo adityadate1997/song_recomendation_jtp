@@ -25,41 +25,41 @@ def index(request):
 def searchResults(request):
 
     context = {}
-    print(request.POST)
-    if request.POST['searchby'] =='name':
 
-        top_matches = nnsd.objects.filter(SongID__icontains=str(request.POST['search'])).order_by('spotify_track_popularity').reverse()[:10]
+    search = request.POST['search']
+    search = search.replace(', ',',')
+    search = search.rsplit(',')
+    
+
+    
+    qs_list = []
+
+    for i in search:
         
-        if top_matches.exists():
-            context = {'Songslist':top_matches}      
+        qs_search = nnsd.objects.filter(Q(SongID__icontains=i) | Q(spotify_genre__icontains=i))
+        if qs_search.exists():
+            qs_list.append(qs_search)
+
+        print(i)    
+
+    if len(qs_list) > 0:
+        qs_searchresult = qs_list[0]
+        for i in qs_list[1:]:
+            qs_searchresult = qs_searchresult & i
+
+        qs_searchresult = qs_searchresult.order_by('spotify_track_popularity').reverse()[:10]
+
+        if qs_searchresult.exists():
+            context = {'Songslist':qs_searchresult}      
             return render(request,'searchResults.html', context)
         else:
             Try_again = "Sorry no match Found: \n"+"Please try again with some other song, artist or genre"  
             context = {'Try_again':Try_again}
-            return render(request,'searchResults.html', context) 
-            
-               
-    elif request.POST['searchby']=='artist':
-        
-        top_songs_artist = nnsd.objects.filter(SongID__icontains=str(request.POST['search'])).order_by('spotify_track_popularity').reverse()[:10]
-        
-        if top_songs_artist.exists():
-            context = {'Songslist':top_songs_artist}      
-            return render(request,'searchResults.html',context)
-        else:
+            return render(request,'searchResults.html', context)
+    else:
             Try_again = "Sorry no match Found: \n"+"Please try again with some other song, artist or genre"  
             context = {'Try_again':Try_again}
-            return render(request,'searchResults.html',context)
-
-    elif request.POST['searchby']=='genre':
-        top_songs_genre = nnsd.objects.filter(spotify_genre__icontains=str(request.POST['search'])).order_by('spotify_track_popularity').reverse()[:10]
-        if top_songs_genre.exists():
-            context = {'Songslist':top_songs_genre}      
-            return render(request,'searchResults.html',context)
-        else:
-            Try_again = "Sorry no match Found: \n"+"Please try again with some other song, artist or genre"  
-            context = {'Try_again':Try_again}
-            return render(request,'searchResults.html',context) 
+            return render(request,'searchResults.html', context)
 
 def result(request):
     
@@ -68,7 +68,6 @@ def result(request):
     song = nnsd.objects.get(SongID=song_id)
     qs_artist = nnsd.objects.filter(Q(SongID__icontains=song.Performer) | Q(spotify_track_album__icontains=song.spotify_track_album))
     qs_genre = gq(song.spotify_genre, song.WeekID)
-    # qs_genre = qs_genre.difference(qs_artist) 
     df_genre = dsg(qs_genre)
     df_artist = dsg(qs_artist)
     
@@ -78,10 +77,7 @@ def result(request):
     rec_artist_qs = nnsd.objects.filter(SongID__in=rec_artist['SongID'].values)
     rec_genre_qs = nnsd.objects.filter(SongID__in=rec_genre['SongID'].values)
 
-    recommendation = {'rec_genre':rec_genre_qs,'rec_artist':rec_artist_qs}
-    # print(ds_genre['SongID']," \n ")
-    # print(rec_genre, "\n")
-    # print(rec_artist, "\n")
-   
+    recommendation = {'rec_genre':rec_genre_qs,'rec_artist':rec_artist_qs,'song':song}
+    
     
     return render(request, 'results.html', recommendation)

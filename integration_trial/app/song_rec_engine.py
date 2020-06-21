@@ -4,7 +4,7 @@ from scipy import sparse
 from sklearn.neighbors import NearestNeighbors
 # from sklearn.externals import joblib
 from tqdm import tqdm
-from . models import NewerSongsDetails as nnsd
+from . models import NewSongDetails as nnsd
 
 
 
