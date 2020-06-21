@@ -78,9 +78,11 @@ WSGI_APPLICATION = 'recommendation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
+        'ENFORCE_SCHEMA': False,
         'HOST': 'mongo',
         'PORT': 27017,
-        'NAME': 'songs',
+        'NAME': 'songs'
+        
         
         
 

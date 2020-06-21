@@ -5,20 +5,20 @@ services:
   web:
     build: .
     restart: always
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./integration_trial:/recommendation
     ports:
       - 8000:8000
     links:
       - db
+    depends_on: 
+      - mongo_seed   
+
   db:
     image: mongo
     restart: always
     container_name: 'mongo'
-    command: mongod
-    volumes: 
-      - ./db:/data/db
     ports:
       - 27017:27017
     
@@ -29,3 +29,12 @@ services:
         - 8081:8081
     depends_on: 
       - db          
+  
+  mongo_seed:
+    image: mongo
+    links:
+      - db
+    volumes:
+      - ./datadir:/datadir
+    command:
+      /datadir/data-import.sh      
