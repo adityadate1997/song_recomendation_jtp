@@ -2,13 +2,17 @@ body{
     background: white url("images/background_2.jpg");
     background-size: cover;
 }
+
 h1{
     color: whitesmoke;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     size: 100px;
-    text-align: justify;
+    text-align: center;
     font-size: 35px;
-    padding-left: 100px;
+    padding-left: 65px;
+    backface-visibility: hidden;
+    font-weight: bold;
+    
 }
 .navbar-brand{
     font-size: 30px;
@@ -17,7 +21,18 @@ h1{
 
 h2{
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: initial;
 }
 
+.navbar-text{    
+    margin-top: 5px;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.navbar-dark .navbar-text {
+    color: white;
+    padding-left: 40%;
+}

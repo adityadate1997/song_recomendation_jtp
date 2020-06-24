@@ -2,18 +2,25 @@
 {% extends 'index.html' %}
 
 
+{% block navbar-text %}
+
+    <div class="navbar-text">Step 2/3(SearchResult)</div>
+
+{% endblock navbar-text %}
+
 
 {% block content %}
 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'search.css' %}">
 
-<h1>Please select the song from these Best matches: </h1>
+
+<h1>Please select the song from these Best matches to generate <br> Machine Learning based Recommendations: </h1><br><br><br>
 <div class="container-fluid">
     
     <div class="row-lg-1">
 
-        <div class="col-lg-5 col-xs-offset-2">
+        <div class="col-lg-6 col-xs-offset-3">
             {% if Songslist %}
             <div class="list-group" width="500px">
                 {% for i in Songslist %}

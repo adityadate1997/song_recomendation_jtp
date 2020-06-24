@@ -1,0 +1,69 @@
+h4{
+    color: lightblue;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: oblique;
+
+}
+
+h3{
+    color:whitesmoke;
+    font-weight: bold;
+    font-size: 40px;
+    font-style: oblique;
+    padding-left: 30%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+h4{
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 40px;
+    font-style: oblique;
+    padding-left: 10%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 3%;
+}
+
+.btn.aqua-gradient{
+    width: 200px;
+    height: 73px;
+}
+
+h1{
+    font-weight: 600;
+    text-align: center;
+    font-family: cursive;
+    margin-bottom: 5%;
+}
+
+
+p{
+    font-size: 20px;
+    padding-left: 10%;
+    font-family: cursive;
+    font-weight: 600;
+    color: wheat;
+    padding-right: 10%;
+}
+
+.row1{
+    height: 800px;
+    width: 95%;
+    padding-top: 4%;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-image: url('./images/background_5.jpg');
+    background-size: cover;
+    margin-bottom: 7%;
+}
+
+strong{
+    font-size: 20px;
+    /* padding-left: 10%; */
+    font-family: cursive;
+    font-weight: 600;
+    color: rgb(77, 9, 9);
+    /* padding-right: 10%; */
+}

@@ -13,13 +13,13 @@ h2{
 }
 
 .row-lg-1{
-    /* align-self: right; */
+    
     align-content: center;
 }
 
 h1{
     text-align: left;
-    padding-left: 10px;
+    padding-left: 50px;
     font-weight: bold;
 }
 
@@ -33,20 +33,24 @@ img{
 }
 
 .split {
-    height: 80%;
+    height: 100%;
     width: 50%;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     justify-content: center;
-    padding-bottom: 100px;
+    /* padding-top: 50px; */
+    flex-wrap: nowrap;
 }
 
 .left {
     left: 0;
+    
 }
 
 .right {
     right: 0;
+    margin-bottom: 50px;
+    
 }
   
 
@@ -67,4 +71,24 @@ img{
 label{
     font-size: 30px;
     color: silver;
+}
+
+h4{
+    color: whitesmoke;
+    font-size: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: black;
+    padding-bottom: 10px;
+    padding-top: 15px;
+    opacity: 0.8;
+}
+
+
+.col-lg-8{
+    column-span: all;
+}
+
+h3{
+    color: yellow;
+    font-size: 15px;
 }

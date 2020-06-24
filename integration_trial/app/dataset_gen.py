@@ -2,11 +2,13 @@ from . models import NewSongDetails as nsd
 import pandas as pd 
 from djongo.models import Q,QuerySet
 
+# converting querysets to dataframes to feed to the Machine Learning part
 def datasetGenerator(qs:QuerySet):
 
     df = pd.DataFrame(qs.values('SongID','Song', 'Performer', 'danceability', 'energy', 'key', 'loudness', 'speechiness', 'acousticness', 'valence', 'tempo'))
     return df
 
+# Saparating different genres from the genrea array
 def genre_qs(genre, year):
 
         s = genre

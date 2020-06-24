@@ -2,9 +2,6 @@ from djongo import models
 
 
 
-# Create your models here.
-
-        
 class NewSongDetails(models.Model):
 
 
@@ -30,5 +27,4 @@ class NewSongDetails(models.Model):
     WeekID = models.IntegerField()
 
     def __str__(self):
-        return self.Song+" "+self.Performer   
-
+        return self.Song+" "+self.Performer
