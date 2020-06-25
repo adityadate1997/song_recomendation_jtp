@@ -38,6 +38,6 @@ How the Machine Learning Algorithm determines similar songs to the current selec
   This is a continuous process where the user can select the song from the recomendations list to generate further recommendations based on that song.  
   
   To refer the Algorithm code goto:    
-  integration_trial->app->song_rec_engine.py  
+  Main_Project_code->app->song_rec_engine.py  
   
   
