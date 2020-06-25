@@ -5,9 +5,9 @@ services:
   web:
     build: .
     restart: always
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./integration_trial:/recommendation
+      - ./Main_Project_code:/recommendation
     ports:
       - 8000:8000
     links:
@@ -32,7 +32,6 @@ services:
   
   mongo_seed:
     image: mongo
-    restart: 'no' 
     links:
       - db
     volumes:

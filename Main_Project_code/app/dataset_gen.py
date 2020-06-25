@@ -8,7 +8,7 @@ def datasetGenerator(qs:QuerySet):
     df = pd.DataFrame(qs.values('SongID','Song', 'Performer', 'danceability', 'energy', 'key', 'loudness', 'speechiness', 'acousticness', 'valence', 'tempo'))
     return df
 
-# Saparating different genres from the genrea array
+# Saparating different genres from the genre array
 def genre_qs(genre, year):
 
         s = genre

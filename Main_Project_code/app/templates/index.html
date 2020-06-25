@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 
-    
-
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
@@ -16,7 +14,7 @@
         <h4>an open-source Song Recommender for your musical appetite!</h4>
         <p>It gives you continuous Song Recommendations by your Current selection.</p>
         <p>This works in <strong>three</strong> steps:<br>
-           <strong>Song searching </strong> : Search for a Song, Artist, Genre or any combination of the three to get top matches from our database.<br>
+           <strong>Song searching </strong> : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.<br>
             <strong> Song Selection</strong> : Select the song you want from the top matches to get started with the <strong>Machine Learning based similar songs recommendations</strong>.<br>
            <strong> Continuous Recommendations</strong> : Select a song you like from the recommendations, to get similar recommendations based on it!<br>   
         </p>
@@ -26,7 +24,7 @@
 </div>
 
 <div class="row2">
-     <h1>Feeling Lazy? Select a Genre to get Started!</h1>
+     <h1>Don't know what to search? Select a Genre to get Started!</h1>
 
     <div class="container-fluid">
         
