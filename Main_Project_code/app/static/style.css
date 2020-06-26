@@ -1,5 +1,5 @@
 body{
-    background: white url("images/background_2.jpg");
+    background: white url("images/background_7.jpg");
     background-size: cover;
 }
 
@@ -15,7 +15,7 @@ h1{
     
 }
 .navbar-brand{
-    font-size: 30px;
+    font-size: xx-large;
 }
 
 
@@ -26,10 +26,10 @@ h2{
 }
 
 .navbar-text{    
-    margin-top: 5px;
-    margin-bottom: 7px;
+    margin-top: 0.1%;
+    margin-bottom: 0.1%;
     font-weight: bold;
-    font-size: 25px;
+    font-size: x-large;
 }
 
 .navbar-dark .navbar-text {
