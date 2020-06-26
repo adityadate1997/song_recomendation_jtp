@@ -2,11 +2,11 @@
 
 ### Welcome to Musitory,  
 #### an open-source Song Recommender for your musical appetite!
-It gives you continuous Song Recommendations by your Current selection.
-It works in __three__ steps 
-    __Song searching__ : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.
-    __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__
-    __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!   
+It gives you continuous Song Recommendations by your Current selection.  
+It works in __three__ steps   
+    __Song searching__ : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.  
+    __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
+    __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
 
 
 ## Getting Started
@@ -26,8 +26,8 @@ $ docker-compose --version
 ```
 - __For Linux Based OS Users__
 
-[Docker](https://docs.docker.com/engine/) - Includes Docker Engine to work with Containers.
-[Docker-Compose](https://docs.docker.com/compose/) - Includes Docker-Compose to combine containers running for an application.
+[Docker](https://docs.docker.com/engine/) - Includes Docker Engine to work with Containers.  
+[Docker-Compose](https://docs.docker.com/compose/) - Includes Docker-Compose to combine containers running for an application.  
 
 Run the following command to check your installation:
 ```
@@ -55,9 +55,9 @@ $ docker-compose up
 
 ## Deployment
 
-After the sucessfull execution of the above commands you can check the deployment by.
+After the sucessfull execution of the above commands you can check the deployment by.  
 
-Going to your favorite browser and going to:
+Going to your favorite browser and going to:  
 
 ```
 localhost:8000
@@ -74,31 +74,31 @@ In database __songs->app_newsongdetails__ to see the songs data.
 
 #### How the Machine Learning Algorithm determines similar songs to the current selection:
 
-It is based on the following features of the songs:
+It is based on the following features of the songs:  
 
-__Beats Per Minute (BPM)__ — The tempo of the song.
-__Energy__ — The energy of a song, the higher the value, the more energetic.
-__Danceability__ — The higher the value, the easier it is to dance to this song.
-__Loudness__ — The higher the value, the louder the song (in dB).
-__Valence__ — The higher the value, the more positive mood for the song.
-__Acousticness__ — The higher the value the more acoustic the song is.
-__Key__ - the group of pitches, or scale, that forms the basis of a music.
+__Beats Per Minute (BPM)__ — The tempo of the song.  
+__Energy__ — The energy of a song, the higher the value, the more energetic.  
+__Danceability__ — The higher the value, the easier it is to dance to this song.  
+__Loudness__ — The higher the value, the louder the song (in dB).  
+__Valence__ — The higher the value, the more positive mood for the song.  
+__Acousticness__ — The higher the value the more acoustic the song is.  
+__Key__ - the group of pitches, or scale, that forms the basis of a music.  
 
-You can refer these attributes in the database.
-The values have been __normalized__ to give all atributes __equal weight.__
+You can refer these attributes in the database.  
+The values have been __normalized__ to give all atributes __equal weight.__  
 
-__Dynamic datasets (two)__ are fed to the algorithm by filtering out the songs based on: 
-* the Artists & Album(first dataset),
-* Genres and the Songs three years prior to and after(6 years around) (second dataset)
+__Dynamic datasets (two)__ are fed to the algorithm by filtering out the songs based on:   
+* the Artists & Album(first dataset),  
+* Genres and the Songs three years prior to and after(6 years around) (second dataset)  
 
-of the currently selected song.
+of the currently selected song.  
 
-__Nearest Neighbours__ algorithm has been used to determine similarity by feeding the model a sparce_matrix of songs and their features to fit on.Which generates the similarity matrix for the songs.
-And then using the __'kneighbours()'__ function, feeding it the vector of the Current Selection features, to get 5 nearest neighbours to it.
+__Nearest Neighbours__ algorithm has been used to determine similarity by feeding the model a sparce_matrix of songs and their features to fit on.Which generates the similarity matrix for the songs.  
+And then using the __'kneighbours()'__ function, feeding it the vector of the Current Selection features, to get 5 nearest neighbours to it.  
 
-This gives the user a mix of __'Similar songs by Artist and Album'(From first dataset)__ as well as __'New Songs to Discover'(From the second dataset)__
+This gives the user a mix of __'Similar songs by Artist and Album'(From first dataset)__ as well as __'New Songs to Discover'(From the second dataset)__  
 
-This is a __continuous recommendation process__ where the user can select the song from the recomendations list to generate further recommendations based on that song.
+This is a __continuous recommendation process__ where the user can select the song from the recomendations list to generate further recommendations based on that song.  
 
 ## Built With
 
