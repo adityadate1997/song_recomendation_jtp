@@ -1,12 +1,13 @@
 # MUSITORY
 
-### Welcome to Musitory,  
-#### an open-source Song Recommender for your musical appetite!
+### Welcome to Musitory  
+#### An open-source Song Recommender for your musical appetite!
 It gives you continuous Song Recommendations by your Current selection.  
-It works in __three__ steps   
-    __Song searching__ : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.  
-    __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
-    __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
+It works in __three__ steps 
+
+  *  __Song searching__ : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.  
+  *  __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
+  *  __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
 
 
 ## Getting Started
