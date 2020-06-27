@@ -96,10 +96,14 @@ __Dynamic datasets (two)__ are fed to the algorithm by filtering out the songs b
 
 of the currently selected song.  
 
+![Queryset](https://github.com/adityadate1997/song_recomendation_jtp/blob/master/readme_images/Queryset.png?raw=true)
+
 __Nearest Neighbours__ algorithm has been used to determine similarity by feeding the model a sparce_matrix of songs and their features to fit on.Which generates the similarity matrix for the songs.  
 And then using the __'kneighbours()'__ function, feeding it the vector of the Current Selection features, to get 5 nearest neighbours to it.  
 
 This gives the user a mix of __'Similar songs by Artist and Album'(From first dataset)__ as well as __'New Songs to Discover'(From the second dataset)__  
+
+![Recommend](https://github.com/adityadate1997/song_recomendation_jtp/blob/master/readme_images/Recommend.png?raw=true)
 
 This is a __continuous recommendation process__ where the user can select the song from the recomendations list to generate further recommendations based on that song.  
 
