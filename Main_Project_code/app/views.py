@@ -82,9 +82,9 @@ def result(request):
 
     # Fetching selected song details from database
     song = nnsd.objects.get(SongID=song_id)
-    
+    print(song.Performer+song.spotify_track_album)
     # Generating Querysets for Machine Learnong Model
-    qs_artist = nnsd.objects.filter(Q(SongID__icontains=song.Performer) | Q(spotify_track_album__icontains=song.spotify_track_album))
+    qs_artist = nnsd.objects.filter(Q(Performer__iexact=song.Performer) | Q(spotify_track_album__exact=song.spotify_track_album))
     qs_genre = gq(song.spotify_genre, song.WeekID)
     
     # Generating recommendation querysets by calling recommendation function from song_rec_engine
@@ -92,6 +92,8 @@ def result(request):
     rec_artist_qs = recommendations(qs_artist, song.SongID)
     rec_genre_qs = recommendations(qs_genre, song.SongID)   
 
-    recommendation = {'rec_genre':rec_genre_qs,'rec_artist':rec_artist_qs,'song':song}
+    
+
+    recommendation = {'rec_genre':rec_genre_qs,'rec_artist':rec_artist_qs,'song':song, 'genre':song.spotify_genre[1:len(song.spotify_genre)-1]}
         
     return render(request, 'results.html', recommendation)

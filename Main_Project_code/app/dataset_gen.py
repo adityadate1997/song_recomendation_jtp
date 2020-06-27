@@ -29,5 +29,3 @@ def genre_qs(genre, year):
         qs_genre = qs_genre & nsd.objects.filter((Q(WeekID__lte=year+3) & Q(WeekID__gte=year-3)))
 
         return qs_genre    
-
-

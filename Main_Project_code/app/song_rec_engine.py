@@ -13,7 +13,7 @@ def songRecommender(df:pd.DataFrame, songId:nnsd.SongID, size):
     # Id stored for later reference to pass later 
     Id = df.loc[df['SongID'] == songId]
 
-    df_for_array = df[['energy', 'key', 'loudness', 'speechiness', 'acousticness', 'valence', 'tempo']]    
+    df_for_array = df[['energy', 'key', 'speechiness', 'acousticness', 'valence', 'tempo']]    
 
     array_for_model = df_for_array.to_numpy()
     
