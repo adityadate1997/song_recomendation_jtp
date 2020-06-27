@@ -1,17 +1,18 @@
 # MUSITORY
 
-### Welcome to Musitory,  
-#### an open-source Song Recommender for your musical appetite!
+### Welcome to Musitory  
+#### An open-source Song Recommender for your musical appetite!
 It gives you continuous Song Recommendations by your Current selection.  
-It works in __three__ steps   
-    __Song searching__ : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.  
-    __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
-    __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
+It works in __three__ steps 
+
+  *  __Song searching__ : Search for a Song, Artist, Genre or any combination (comma saparated) of the three to get top matches from our database.  
+  *  __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
+  *  __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.To get started clone the repository to your system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.To get started, clone the repository to your system.
 
 ### Prerequisites
 
@@ -36,26 +37,26 @@ $ docker-compose --version
 ```
 ### Installing
 
-After completing the above prerequisites all you need to are the followind steps to get the project uo and running!
+After completing the above prerequisites all you need to are the following steps to get the project up and running!
 
 Set the downloaded repository as the current directory on your terminal:
 
 ```
-$ cd <repository-path>
+ cd <repository-path>
 ```
 
 Execute the following command to get the project running
 
 ```
-$ docker-compose build
-$ docker-compose up
+ docker-compose build
+ docker-compose up
 ```
 
 **Kindly make sure the terminal is running with admin permissions**
 
 ## Deployment
 
-After the sucessfull execution of the above commands you can check the deployment by.  
+After the sucessfull execution of the above commands, you can check the deployment by.  
 
 Going to your favorite browser and going to:  
 
@@ -63,7 +64,7 @@ Going to your favorite browser and going to:
 localhost:8000
 ```
 
-If you want to see the database go to mongo-express running on
+If you want to see the database, go to mongo-express running on
 
 ```
 localhost:8081
@@ -77,14 +78,14 @@ In database __songs->app_newsongdetails__ to see the songs data.
 It is based on the following features of the songs:  
 
 __Beats Per Minute (BPM)__ — The tempo of the song.  
-__Energy__ — The energy of a song, the higher the value, the more energetic.  
+__Energy__ — The higher the value, the more energetic.    
 __Danceability__ — The higher the value, the easier it is to dance to this song.  
 __Loudness__ — The higher the value, the louder the song (in dB).  
 __Valence__ — The higher the value, the more positive mood for the song.  
 __Acousticness__ — The higher the value the more acoustic the song is.  
 __Key__ - the group of pitches, or scale, that forms the basis of a music.  
 
-You can refer these attributes in the database.  
+You can refer to these attributes in the database.  
 The values have been __normalized__ to give all atributes __equal weight.__  
 
 __Dynamic datasets (two)__ are fed to the algorithm by filtering out the songs based on:   
