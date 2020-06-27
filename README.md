@@ -37,19 +37,19 @@ $ docker-compose --version
 ```
 ### Installing
 
-After completing the above prerequisites all you need to are the followind steps to get the project up and running!
+After completing the above prerequisites all you need to are the following steps to get the project up and running!
 
 Set the downloaded repository as the current directory on your terminal:
 
 ```
-$ cd <repository-path>
+ cd <repository-path>
 ```
 
 Execute the following command to get the project running
 
 ```
-$ docker-compose build
-$ docker-compose up
+ docker-compose build
+ docker-compose up
 ```
 
 **Kindly make sure the terminal is running with admin permissions**
