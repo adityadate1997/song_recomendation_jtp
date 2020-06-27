@@ -64,12 +64,15 @@ Going to your favorite browser and going to:
 localhost:8000
 ```
 
+![Demo](https://github.com/adityadate1997/song_recomendation_jtp/blob/master/readme_images/Demo.gif?raw=true)
+
 If you want to see the database, go to mongo-express running on
 
 ```
 localhost:8081
 ```
 In database __songs->app_newsongdetails__ to see the songs data.
+
 
 ## Song Recommendation Algorithm
 
@@ -79,8 +82,7 @@ It is based on the following features of the songs:
 
 __Beats Per Minute (BPM)__ — The tempo of the song.  
 __Energy__ — The higher the value, the more energetic.    
-__Danceability__ — The higher the value, the easier it is to dance to this song.  
-__Loudness__ — The higher the value, the louder the song (in dB).  
+__Danceability__ — The higher the value, the easier it is to dance to this song.   
 __Valence__ — The higher the value, the more positive mood for the song.  
 __Acousticness__ — The higher the value the more acoustic the song is.  
 __Key__ - the group of pitches, or scale, that forms the basis of a music.  
@@ -100,6 +102,8 @@ And then using the __'kneighbours()'__ function, feeding it the vector of the Cu
 This gives the user a mix of __'Similar songs by Artist and Album'(From first dataset)__ as well as __'New Songs to Discover'(From the second dataset)__  
 
 This is a __continuous recommendation process__ where the user can select the song from the recomendations list to generate further recommendations based on that song.  
+
+![Demo](https://github.com/adityadate1997/song_recomendation_jtp/blob/master/readme_images/recommendations.gif?raw=true)
 
 ## Built With
 
