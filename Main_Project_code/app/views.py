@@ -82,7 +82,7 @@ def result(request):
 
     # Fetching selected song details from database
     song = nnsd.objects.get(SongID=song_id)
-    print(song.Performer+song.spotify_track_album)
+    
     # Generating Querysets for Machine Learnong Model
     qs_artist = nnsd.objects.filter(Q(Performer__iexact=song.Performer) | Q(spotify_track_album__exact=song.spotify_track_album))
     qs_genre = gq(song.spotify_genre, song.WeekID)
