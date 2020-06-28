@@ -9,9 +9,7 @@ It works in __three__ steps
   *  __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
   *  __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
 
-## Table of Contents (Optional)
-
-> If your `README` has a lot of info, section headers might be nice.
+## Table of Contents 
 
 - [Getting Started](#getting-started)
 - [Deployment](#deployment)
