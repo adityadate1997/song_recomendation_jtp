@@ -35,7 +35,9 @@ $ docker-compose --version
 - __For Linux Based OS Users__
 
 [Docker](https://docs.docker.com/engine/) - Includes Docker Engine to work with Containers.  
-[Docker-Compose](https://docs.docker.com/compose/) - Includes Docker-Compose to combine containers running for an application.  
+[Docker-Compose](https://docs.docker.com/compose/) - Includes Docker-Compose to combine containers running for an application.
+
+__Kindly run all the commands with a 'sudo' before it, for all linux based systems__
 
 Run the following command to check your installation:
 ```
