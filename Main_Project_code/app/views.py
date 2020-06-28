@@ -7,7 +7,7 @@ from djongo.models import Q
 # function to resolve diferent kinds of requests to the page
 def index(request):
 
-    if request.POST:
+    if request.method == 'POST':
 
         # On request from search form
         if request.POST['action'] == 'search':
@@ -21,7 +21,9 @@ def index(request):
     else:
         top_genre_list = ['Blues', 'Country', 'Hip hop', 'Pop', 'Reggae', 'R&B', 'Hard Rock', 'Alternative Rock', 'Rap', 'Jazz', 'EDM', 'Metal']
         return render(request, 'index.html', {'Genre':top_genre_list})
-                
+
+
+# Search bar function for querying the database
 def searchResults(request):
 
     # Cleaning the search string
@@ -33,7 +35,7 @@ def searchResults(request):
     # List to store different querysets generated  
     qs_list = []
 
-    # Querying the databse for various values in Search string
+    # Querying the database for various values in Search string
     for i in search:
         
         qs_search = nnsd.objects.filter(Q(SongID__icontains=i) | Q(spotify_genre__icontains=i))
@@ -75,6 +77,7 @@ def searchResults(request):
         context = {'Try_again':try_again}
         return render(request, 'searchResults.html', context)
 
+
 # Machine Learning based recomendations. 
 def result(request):
     
@@ -85,6 +88,8 @@ def result(request):
     
     # Generating Querysets for Machine Learnong Model
     qs_artist = nnsd.objects.filter(Q(Performer__iexact=song.Performer) | Q(spotify_track_album__exact=song.spotify_track_album))
+
+    # Details on how it is generated in dataset_gen.py -> genre_qs 
     qs_genre = gq(song.spotify_genre, song.WeekID)
     
     # Generating recommendation querysets by calling recommendation function from song_rec_engine

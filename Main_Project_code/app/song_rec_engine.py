@@ -8,10 +8,10 @@ from . dataset_gen import datasetGenerator as dsg
 
 
 
-def songRecommender(df:pd.DataFrame, songId:nnsd.SongID, size):
+def songRecommender(df: pd.DataFrame, songid: nnsd.SongID, size):
 
     # Id stored for later reference to pass later 
-    Id = df.loc[df['SongID'] == songId]
+    Id = df.loc[df['SongID'] == songid]
 
     df_for_array = df[['energy', 'key', 'speechiness', 'acousticness', 'valence', 'tempo']]    
 
