@@ -93,10 +93,10 @@ In database __songs->app_newsongdetails__ to see the songs data.
 It is based on the following features of the songs:  
 
 __Beats Per Minute (BPM)__ — The tempo of the song.  
-__Energy__ — The higher the value, the more energetic. 
+__Energy__ — The higher the value, the more energetic.   
 __Valence__ — The higher the value, the more positive mood for the song.  
 __Acousticness__ — The higher the value the more acoustic the song is.  
-__Key__ - the group of pitches, or scale, that forms the basis of the music.
+__Key__ - the group of pitches, or scale, that forms the basis of the music.  
 __Speachiness__ - detects the presence of spoken words in a track.
 
 You can refer to these attributes in the database.  
