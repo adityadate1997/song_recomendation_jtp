@@ -9,10 +9,19 @@ It works in __three__ steps
   *  __Song Selection__ : Select the song you want from the top matches to get started with the __Machine Learning based similar songs recommendations__  
   *  __Continuous Recommendations__ : Select a song you like from the recommendations, to get similar recommendations based on it!     
 
+## Table of Contents (Optional)
+
+> If your `README` has a lot of info, section headers might be nice.
+
+- [Getting Started](#getting-started)
+- [Deployment](#deployment)
+- [Song Recommendation Algorithm](#song-recommendation-algorithm)
+- [User Acceptance Testing](#user-acceptance-testing)
+- [FAQs](#faqs) 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.To get started, clone the repository to your system.
+These instructions will get you a copy of the project up and running on your local machine.To get started, __clone__ the repository to your system.
 
 ### Prerequisites
 
@@ -38,6 +47,8 @@ $ docker-compose --version
 ### Installing
 
 After completing the above prerequisites all you need to are the following steps to get the project up and running!
+
+**Kindly make sure the Ports 8000,8081,27017 of your system are available**
 
 Set the downloaded repository as the current directory on your terminal:
 
@@ -71,6 +82,7 @@ If you want to see the database, go to mongo-express running on
 ```
 localhost:8081
 ```
+
 In database __songs->app_newsongdetails__ to see the songs data.
 
 
@@ -109,6 +121,12 @@ This is a __continuous recommendation process__ where the user can select the so
 
 ![Demo](https://github.com/adityadate1997/song_recomendation_jtp/blob/master/readme_images/recommendations.gif?raw=true)
 
+## User Acceptance Testing
+ 
+ The recommendations have been tested on __20 Users__ with a 90% success rate with the __New Songs to Dscover__ part.  
+
+ Feel free to write in the comments how you liked the Song Recommendations.
+
 ## Built With
 
 * [Django](https://docs.djangoproject.com/en/3.0/) - The web framework used
@@ -118,4 +136,21 @@ This is a __continuous recommendation process__ where the user can select the so
 ## Authors
 
 * **Aditya Date** 
+
+## FAQs
+
+- What do i do if the website shows no data on all searches?
+  - The issue is that no data has been loaded in the database container.  
+  
+   Execute the following command in your repository directory for a fix
+  
+   ```
+   chmod +x ./datadir/data-import.sh
+   ```
+   And then do a
+
+   ```
+   docker-compose up
+   ```
+   Again to solve the issue.
   
