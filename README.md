@@ -54,7 +54,7 @@ Set the downloaded repository as the current directory on your terminal:
  cd <repository-path>
 ```
 
-Execute the following command to get the project running
+Execute the following commands to get the project running
 
 ```
  docker-compose build
@@ -91,11 +91,11 @@ In database __songs->app_newsongdetails__ to see the songs data.
 It is based on the following features of the songs:  
 
 __Beats Per Minute (BPM)__ — The tempo of the song.  
-__Energy__ — The higher the value, the more energetic.    
-__Danceability__ — The higher the value, the easier it is to dance to this song.   
+__Energy__ — The higher the value, the more energetic. 
 __Valence__ — The higher the value, the more positive mood for the song.  
 __Acousticness__ — The higher the value the more acoustic the song is.  
-__Key__ - the group of pitches, or scale, that forms the basis of a music.  
+__Key__ - the group of pitches, or scale, that forms the basis of the music.
+__Speachiness__ - detects the presence of spoken words in a track.
 
 You can refer to these attributes in the database.  
 The values have been __normalized__ to give all atributes __equal weight.__  
